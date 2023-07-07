@@ -2,38 +2,7 @@ install.packages("tidyverse")
 library(tidyverse)
 
 #read in data & format
-dyno <- read.csv("Dyno.csv")
-dyno <- dyno[order(dyno$Name),]
-
-str(dyno)
-
-ikdc <- read.csv("IKDC.csv")
-ikdc <- ikdc[order(ikdc$Name),]
-
-str(ikdc)
-
-acl.rsi <- read.csv("acl.rsi.csv")
-acl.rsi <- acl.rsi[order(acl.rsi$Name),]
-
-str(acl.rsi)
-
-hop <- read.csv("hop.csv")
-hop <- hop[order(hop$Name),]
-
-str(hop)
-
-#check to see names match across all dataframes
-which(dyno$Name != ikdc$Name)
-which(acl.rsi$Name != dyno$Name)
-which(hop$Name != dyno$Name)
-
-#marge dataframes together based on participant name
-data <- merge(dyno, ikdc, by = c("Name")) %>%
-  merge(acl.rsi, by = c("Name")) %>%
-  merge(hop, by = c("Name"))
-
-data$ID <- c(1:35)
-str(data)
+dyno <- read.csv("acl_clinical_tests_de-identified.csv")
 
 #hop test quad strength correlation
 cor.test(data$hop.inj, data$quad.60.inj)
