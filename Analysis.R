@@ -5,7 +5,7 @@
 #Date: 5/5/23
 
 #read in data
-data <- read.csv("acl_clinical_tests.csv")
+data <- read.csv("acl_clinical_tests_de-identified.csv")
 
 #descriptives - 1 = injured limb; 2 = opposite limb
 library(tidyverse)
